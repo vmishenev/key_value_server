@@ -72,7 +72,13 @@ class HandleRequest:
             raise web.badrequest()
         else:
             response = {}
-            obj_data = json.loads(web.data())
+            
+            obj_data = {}
+            if isinstance(answ, bytes):
+                response['message'] = json.loads(web.data().decode('utf-8'))
+            else:
+                response['message'] = json.loads(web.data())
+
             db_doc = coll.find_one({'key': key})
             if db_doc == None:
                 response['Status'] = 'Created'
