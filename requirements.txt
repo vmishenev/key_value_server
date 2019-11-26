@@ -2,3 +2,4 @@ pymongo
 redis
 web.py
 requests
+paste
