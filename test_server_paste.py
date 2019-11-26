@@ -21,7 +21,7 @@ class TestServer(unittest.TestCase):
         testApp = TestApp(app.wsgifunc(*middleware))
         key = 'test'
         message = 'jhfsdf'
-        obj_data = {'key': key, 'msg': message}
+        obj_data = {'key': key, 'message': message}
         r1 = testApp.post('/storage/' + key, params=json.dumps(obj_data))
         r = testApp.get('/storage/' + key)
         self.assertEqual(r1.status, 200)
