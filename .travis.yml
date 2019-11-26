@@ -12,4 +12,5 @@ services:
 install:
   - pip install -r requirements.txt
 script:
+  - python server.py > log &
   - python -m unittest -v test_server
