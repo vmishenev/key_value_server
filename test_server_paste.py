@@ -5,7 +5,7 @@ from paste.fixture import TestApp
 
 from server import app
 import unittest
-
+import json
 
 
 class TestServer(unittest.TestCase):
@@ -22,7 +22,7 @@ class TestServer(unittest.TestCase):
         key = 'test'
         message = 'jhfsdf'
         obj_data = {'key': key, 'msg': message}
-        r1 = testApp.post('/storage/' + key, params=obj_data)
+        r1 = testApp.post('/storage/' + key, params=json.dumps(obj_data))
         r = testApp.get('/storage/' + key)
         self.assertEqual(r1.status, 200)
         self.assertEqual(r.status, 200)
