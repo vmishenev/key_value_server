@@ -22,8 +22,8 @@ class TestServer(unittest.TestCase):
         key = 'test'
         message = 'jhfsdf'
         obj_data = {'key': key, 'msg': message}
-        r1 = requests.post('/storage/' + key, json=obj_data)
-        r = requests.get('/storage/' + key)
+        r1 = testApp.post('/storage/' + key, params=obj_data)
+        r = testApp.get('/storage/' + key)
         self.assertEqual(r1.status, 200)
         self.assertEqual(r.status, 200)
 
