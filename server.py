@@ -74,7 +74,7 @@ class HandleRequest:
             response = {}
             
             obj_data = {}
-            if isinstance(answ, bytes):
+            if isinstance(web.data(), bytes):
                 response['message'] = json.loads(web.data().decode('utf-8'))
             else:
                 response['message'] = json.loads(web.data())
