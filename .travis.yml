@@ -16,6 +16,7 @@ script:
 before_deploy:
   - docker build -t key_storage_server .
   - docker login -u vadimik -p "$REGISTRY_PASS"
+  - docker tag key_storage_server vadimik/key_storage_server:1
 deploy:
   provider: script
   script: docker push vadimik/key_storage_server:1
