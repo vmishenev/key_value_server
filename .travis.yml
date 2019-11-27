@@ -13,8 +13,8 @@ install:
   - pip install -r requirements.txt
 script:
   - python -m unittest -v test_server_paste
-  - docker build -t key_storage_server . 
 before_deploy:
+  - docker build -t key_storage_server .
   - docker login -u vadimik -p "$REGISTRY_PASS"
 deploy:
   provider: script
