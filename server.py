@@ -75,19 +75,19 @@ class HandleRequest:
             
             obj_data = {}
             if isinstance(web.data(), bytes):
-                response['message'] = json.loads(web.data().decode('utf-8'))
+                obj_data = json.loads(web.data().decode('utf-8'))
             else:
-                response['message'] = json.loads(web.data())
-
+                obj_data = json.loads(web.data())
+            msg = obj_data['message']
             db_doc = coll.find_one({'key': key})
             if db_doc == None:
                 response['Status'] = 'Created'
-                coll.insert_one({'key': key, 'msg': obj_data['message']})
+                coll.insert_one({'key': key, 'msg': msg})
             else:
                 response['Status'] = 'OK'
-                db_doc['msg'] = obj_data['message']
+                db_doc['msg'] = msg
                 if cache.exists(key):
-                    cache.set(key, obj_data['message'])
+                    cache.set(key, msg)
             return json.dumps(response)
 
     # --------------------------------------------
