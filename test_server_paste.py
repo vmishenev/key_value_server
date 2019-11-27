@@ -19,7 +19,7 @@ class TestServer(unittest.TestCase):
     def test_add(self):
         middleware = []
         testApp = TestApp(app.wsgifunc(*middleware))
-        key = 'test'
+        key = 'test2'
         message = 'jhfsdf'
         obj_data = {'key': key, 'message': message}
         r1 = testApp.post('/storage/' + key, params=json.dumps(obj_data))
