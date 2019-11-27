@@ -41,7 +41,7 @@ class TestServer(unittest.TestCase):
         self.assertEqual(json.loads(r.body.decode('utf-8'))['message'], message)
         r3 = testApp.delete('/storage/' + key)
         r4 = testApp.get('/storage/'+ key, status="*")
-        self.assertEqual(r.status, 404)
+        self.assertEqual(r4.status, 404)
 
 if __name__ == '__main__':
     unittest.main()
